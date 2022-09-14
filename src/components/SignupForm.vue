@@ -21,7 +21,7 @@
         >
           회원 가입
         </button>
-        <p>{{ logMessage }}</p>
+        <p class="log">{{ logMessage }}</p>
       </form>
     </div>
   </div>
