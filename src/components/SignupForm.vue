@@ -33,15 +33,19 @@ export default {
   },
   methods: {
     async submitForm() {
-      const userData = {
-        username: this.username,
-        password: this.password,
-        nickname: this.nickname,
-      };
-      const { data } = await registerUser(userData);
-      console.log(data.username);
-      this.logMessage = `${data.username} 님이 가입되었습니다`;
-      this.initForm();
+      try {
+        const userData = {
+          username: this.username,
+          password: this.password,
+          nickname: this.nickname,
+        };
+        const { data } = await registerUser(userData);
+        console.log(data.username);
+        this.logMessage = `${data.username} 님이 가입되었습니다`;
+        this.initForm();
+      } catch (error) {
+        console.log(error.response.data);
+      }
     },
     initForm() {
       this.username = '';
