@@ -1,14 +1,12 @@
 <template>
-	<div>
-		<header>
-			<router-link to="/login">Login</router-link> |
-			<router-link to="/signup">Signup</router-link>
-		</header>
-	</div>
+  <header>
+    <router-link to="/login">로그인</router-link> |
+    <router-link to="/signup">회원가입</router-link>
+  </header>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>
