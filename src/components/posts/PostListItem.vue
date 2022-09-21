@@ -7,15 +7,16 @@
       {{ postItem.contents }}
     </div>
     <div class="post-time">
-      {{ postItem.createdAt }}
-      <i class="icon ion-md-create"></i>
+      {{ postItem.createdAt | formatDate }}
+      <i class="icon ion-md-create" @click="routeEditPage"></i>
       <i class="icon ion-md-trash" @click="deleteItem"></i>
     </div>
   </li>
 </template>
 
 <script>
-import {deletePost} from '@/api/posts'
+import { deletePost } from '@/api/posts';
+
 export default {
   props: {
     postItem: {
@@ -23,16 +24,19 @@ export default {
       required: true,
     },
   },
-  methods:{
-    async deleteItem(){
-      if(confirm('삭제하시겠습니까')){
+  methods: {
+    async deleteItem() {
+      if (confirm('삭제하시겠습니까')) {
         await deletePost(this.postItem._id);
         this.$emit('refresh');
       }
-
-      // console.log('삭제');
-    }
-  }
+    },
+    routeEditPage() {
+      const id = this.postItem._id;
+      console.log(id);
+      this.$router.push(`/post/${id}`);
+    },
+  },
 };
 </script>
 
